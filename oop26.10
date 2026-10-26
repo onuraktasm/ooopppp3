@@ -1,0 +1,112 @@
+int yas = 18;
+string uygunluk;
+uygunluk = (yas >= 18) ? "Oy vermeye uygun" : "Oy vermeye uygun değil";
+Console.Write(uygunluk);
+
+-----------------------------------
+
+class Hasta
+{
+    public string İsim { get; set; }
+    public int hastaId { get; set; }
+    private bool randevuDurumu;
+
+    public Hasta(string isim, int hastaıd)
+    {
+        İsim = isim;
+        hastaId = hastaıd;
+        randevuDurumu = false; // Başlangıçta randevu alınmamış
+    }
+    public void randevuAl()
+    {
+        if (randevuDurumu)
+        {
+            Console.WriteLine($"Hasta: {İsim}\nRandevu alındı.");
+        }
+        else
+        {
+            randevuDurumu = true;
+            Console.WriteLine($"Hasta: {İsim}\n Randevu alındı.");
+
+        }
+    }
+    public void randevuyuİptalEt()
+    {
+        if (!randevuDurumu)
+        {
+            Console.WriteLine($"Hasta: {İsim}\nRandevu bulunamadı.");
+        }
+        else
+        {
+            randevuDurumu = false;
+            Console.WriteLine($"Hasta: {İsim}\nRandevu iptal edildi.");
+        }
+    }
+    public void bilgiGoster()
+    {
+        string durum = randevuDurumu ? "Randevu alınmış." : "Randevu alınmamış.";
+        Console.WriteLine($"Hasta: {İsim}\nRandevu durumu: {durum}");
+    }
+
+}
+class Randevu
+{
+    public string randevuSaati { get; set; }
+    public Hasta Hasta { get; set; }
+
+    public Randevu(Hasta hasta)
+    {
+        Hasta = hasta;
+    }
+    public void RandevuSaatiBelirle(string saat)
+    {
+        randevuSaati = saat;
+        Console.WriteLine($"Hasta: {Hasta.İsim} için randevu saati: {randevuSaati}");
+    }
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        Hasta hasta1 = new Hasta("Mehmet",22);
+        hasta1.bilgiGoster();
+        hasta1.randevuAl();
+        hasta1.bilgiGoster();
+        hasta1.randevuyuİptalEt();
+
+        Console.WriteLine();
+        
+
+    }
+}
+
+----------------------------------
+
+int y = 0;
+while (y < 10)
+{
+    y++;
+    if (y % 2 == 0)
+    {
+        continue;
+    }
+    Console.WriteLine(y);
+}
+   
+----------------------------------
+
+int satirSayisi = 5;
+int i = 1;
+while (i <= satirSayisi)
+{
+    int j = 1;
+    while (j <= i)
+    {
+        Console.Write("*");
+        j++;
+    }
+    Console.WriteLine();
+    i++;
+}
+
+------------------------------
